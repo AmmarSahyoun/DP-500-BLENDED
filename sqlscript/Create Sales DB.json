@@ -1,0 +1,20 @@
+{
+	"name": "Create Sales DB",
+	"properties": {
+		"folder": {
+			"name": "Explore"
+		},
+		"content": {
+			"query": "CREATE DATABASE Sales\n  COLLATE Latin1_General_100_BIN2_UTF8;\nGO;\n\nUse Sales;\nGO;\n\nCREATE EXTERNAL DATA SOURCE sales_data WITH (\n    LOCATION = 'https://datalake5a7elx3.dfs.core.windows.net/files/sales/'\n);\nGO;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "Sales JSON query",
+	"properties": {
+		"folder": {
+			"name": "Explore"
+		},
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT \n        JSON_VALUE (jsonContent, '$.SalesOrderNumber') as OrderNumber,\n        JSON_VALUE (jsonContent, '$.CustomerName') AS Customer,\n        jsonContent\nFROM\n    OPENROWSET(\n        BULK 'https://datalake5a7elx3.dfs.core.windows.net/files/sales/json/',\n        FORMAT = 'CSV',\n        FIELDQUOTE = '0x0b',\n        FIELDTERMINATOR ='0x0b',\n        ROWTERMINATOR = '0x0b'\n    )\n    WITH (\n        jsonContent varchar(MAX)\n    ) AS rows\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
